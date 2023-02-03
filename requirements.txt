@@ -1,0 +1,8 @@
+markdown==3.4.1
+spacy==3.4.1
+spacy_ke==0.1.4
+torchvision==0.13.1
+torch==1.12.1
+transformers==4.21.1
+black==22.6.0
+pylint==2.14.5

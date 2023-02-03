@@ -1,0 +1,29 @@
+{{ define "main" }}
+
+<h1 class="post-title">{{ .Title }}</h1>
+
+{{ $dateFormat := $.Site.Params.dateFormat | default "Jan 2, 2006" }}
+<strong>Last Updated: </strong>{{ .PublishDate.Format $dateFormat }}
+<br>
+{{ with .Params.tags }}
+  <strong>Tags: </strong>
+  {{ range . }}
+    <a href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+  {{ end }}
+{{ end }}
+<br>
+{{ with .Params.categories }}
+  <strong>Categories: </strong>
+  {{ range . }}
+    <a href="{{ "categories/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+  {{ end }}
+{{ end }}
+
+{{ if ne .Params.toc false }}
+  {{ partial "toc.html" . }}
+{{ end }}
+
+{{ .Content }}
+{{ template "_internal/disqus.html" . }}
+
+{{ end }}
